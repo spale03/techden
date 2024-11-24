@@ -1,0 +1,219 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: rgb(73, 144, 238);
+}
+
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  width: 120px;
+}
+
+.header-title {
+  font-size: 35px;
+  color: orange;
+  margin: 0;
+  text-shadow: 1px 1px 0 #444;
+  font-style: italic;
+  font-weight: 900;
+  padding-left: 680px;
+}
+
+.header-title a {
+  color: rgb(255, 255, 255);
+}
+
+.header-title a:hover {
+  color: rgb(7, 37, 211);
+}
+
+nav {
+  margin-left: auto;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul.left-menu {
+  margin-right: 10px;
+}
+
+nav ul li {
+  display: inline;
+  margin-right: 10px;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #ffffff;
+}
+
+nav ul li a:hover {
+  color: rgb(55, 0, 255);
+}
+
+.left-menu {
+  text-align: right;
+}
+
+main {
+  padding: 20px;
+}
+
+.car {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.car img {
+  width: 81%;
+  height: auto;
+  padding-left: 177px;
+  opacity: 89%;
+}
+
+.car-details {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  width: 80%;
+  font-weight: bold;
+  font-style: italic;
+}
+
+#carImage {
+  opacity: 1;
+  transition: opacity 0.5s ease;
+}
+
+.fade-out {
+  opacity: 0;
+}
+
+.why-us {
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.why-us img {
+  width: 81%;
+  height: auto;
+  padding-left: 177px;
+  opacity: 50%;
+}
+
+.why-us-text {
+  position: absolute;
+  bottom: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px;
+  text-align: justify;
+  width: 80%;
+}
+
+.options-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
+}
+
+.option1 {
+  width: 35%;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 177px;
+}
+
+.option2 {
+  width: 35%;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 5px;
+  margin-left: 120px;
+  margin-right: 120px;
+}
+
+.option3 {
+  width: 35%;
+  background-color: #444;
+  padding: 20px;
+  border-radius: 5px;
+  margin-right: 177px;
+}
+
+.option a {
+  text-decoration: none;
+  color: orange;
+}
+
+.option-content {
+  text-align: center;
+  color: orange;
+}
+
+.option-content h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.option-content p {
+  font-size: 14px;
+}
+
+footer {
+  background-color: #333;
+  color: #fff;
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  text-align: center;
+}
+
+
+.cart-badge {
+  position: relative;
+  display: inline-block;
+}
+
+.cart-icon {
+  font-size: 24px;
+}
+
+.item-count {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  background-color: #ff5252;
+  /* You can change this to your desired color */
+  color: #fff;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
