@@ -23,8 +23,10 @@ function handleImport($filename)
         $naziv = $node->naziv;
         $cena = $node->cena;
         $slika = $node->slika;
+        $broj_pregleda = $node->broj_pregleda;
+        $broj_kupovina = $node->broj_kupovina;
 
-
+        // print_r($broj_pregleda);
         // ako neki od propertija bude prazan u xml-u, nastavimo dalje
         if ($naziv == "" || $cena == "" || $slika == "") {
             // header("location: administrator.php?racunar=0");
@@ -32,14 +34,19 @@ function handleImport($filename)
         }
 
         // spremimo sql statement za ubacivanje parametara sa delimiterom :delim
-        $sql = "INSERT IGNORE INTO racunari (naziv, cena, slika) 
-        VALUES (:naziv, :cena, :slika)";
+        // UPSERT
+        // INSERT OR UPDATE
+        $sql = "INSERT into racunari (naziv,cena,slika,broj_pregleda,broj_kupovina)
+        VALUES (:naziv,:cena,:slika,:broj_pregleda,:broj_kupovina)
+        ON DUPLICATE KEY UPDATE cena = :cena, slika = :slika, broj_pregleda = :broj_pregleda, broj_kupovina = :broj_kupovina;";
         $stmt = $pdo->prepare($sql);
 
         // povezemo parametre sa delimiterom
         $stmt->bindParam(":naziv", $naziv);
         $stmt->bindParam(":cena", $cena);
         $stmt->bindParam(":slika", $slika);
+        $stmt->bindParam(":broj_pregleda", $broj_pregleda);
+        $stmt->bindParam(":broj_kupovina", $broj_kupovina);
 
         // izvrsimo sql insert za svaki element koji je ispunio uslove
         $stmt->execute();
@@ -88,25 +95,30 @@ function handleExport()
         $racunarObjekt = (object) $racunar;
 
         // sacuvaj sve vrednosti u promenljive
-        $racunar_ID = $racunarObjekt->racunar_ID;
+        // $racunar_ID = $racunarObjekt->racunar_ID;
         $naziv = $racunarObjekt->naziv;
         $slika = $racunarObjekt->slika;
         $cena = $racunarObjekt->cena;
-
+        $broj_pregleda = $racunarObjekt->broj_pregleda;
+        $broj_kupovina = $racunarObjekt->broj_kupovina;
         // napravi child node koji ce biti jedan nivo ispod root node-a
         $racunarXML = $domtree->createElement("racunar");
 
         // napravi child node-ove koji ce biti nivo ispod child node-a
-        $idXML = $domtree->createElement("id", $racunar_ID);
+        // $idXML = $domtree->createElement("id", $racunar_ID);
         $nazivXML = $domtree->createElement("naziv", $naziv);
         $cenaXML = $domtree->createElement("cena", $cena);
         $slikaXML = $domtree->createElement("slika", $slika);
+        $broj_pregledaXML = $domtree->createElement("broj_pregleda", value: $broj_pregleda);
+        $broj_kupovinaXML = $domtree->createElement("broj_kupovina", $broj_kupovina);
 
         // appenduj sve na racunar node
-        $racunarXML->appendChild($idXML);
+        // $racunarXML->appendChild($idXML);
         $racunarXML->appendChild($nazivXML);
         $racunarXML->appendChild($cenaXML);
         $racunarXML->appendChild($slikaXML);
+        $racunarXML->appendChild($broj_pregledaXML);
+        $racunarXML->appendChild($broj_kupovinaXML);
 
         // appenduj racunar node na root racunari
         $xmlRoot->appendChild($racunarXML);
@@ -132,3 +144,6 @@ switch ($_SERVER["REQUEST_METHOD"]) {
         handleExport();
         break;
 }
+
+
+// Dodaj ovde parsiranje za nove parametre nad racunarima

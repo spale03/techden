@@ -1,6 +1,6 @@
 <?php
 include "database.php";
-
+include "sessionchecker.php";
 
 $racunar_ID = $_POST["racunar_ID"];
 $user_ID = $_POST["user_ID"];

@@ -33,6 +33,8 @@ $rezultat = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $rezultat2 = $stmt2->fetchAll(PDO::FETCH_ASSOC)[0];
 $total = $rezultat2['total'];
 
+count($rezultat) == 0 ?
+  header("location: shop.php") : false;
 
 ?>
 
@@ -52,41 +54,41 @@ $total = $rezultat2['total'];
 
 
   <h2>Korpa</h2>
-  <?php if($total > 0): ?>
-  <p class="total">total:
-    <?= $total; ?>
-  </p>
- 
-  <main class="korpa">
-    <?php foreach ($rezultat as $proizvod_korpa):
-      $naziv = $proizvod_korpa["naziv"];
-      $cena = $proizvod_korpa["cena"];
-      $slika = $proizvod_korpa["slika"];
-      $racunar_ID = $proizvod_korpa["racunar_ID"];
-      $korpa_ID = $proizvod_korpa["korpa_ID"];
+  <?php if ($total > 0): ?>
+    <p class="total">total:
+      <?= $total; ?>
+    </p>
 
-      ?>
-      <!-- Render Kolicine?? -->
-      <form class="korpa-stavka" method="POST" action="obrisi_stavku.php">
-        <!-- Render Slike-->
-        <img src="image/racunari/<?= $slika; ?>" alt="">
-        <!-- Render naziva -->
-        <div class="korpa-stavka-detalji">
-          <!-- Render Cene -->
-          <div class="korpa-stavka-naziv">Naziv:
-            <?= $naziv; ?>
-          </div>
-          <div class="korpa-stavka-cena">Cena: RSD
-            <?= $cena; ?>
-          </div>
-        </div>
-        <input type="hidden" name="korpa_ID" value="<?= $korpa_ID; ?>">
-        <button class="korpa-stavka-ukloni" type="submit">Obrisi stavku</button>
-        <!-- Render dugmeta za brisanje -->
-      </form>
-    <?php endforeach; ?>
+    <main class="korpa">
+      <?php foreach ($rezultat as $proizvod_korpa):
+        $naziv = $proizvod_korpa["naziv"];
+        $cena = $proizvod_korpa["cena"];
+        $slika = $proizvod_korpa["slika"];
+        $racunar_ID = $proizvod_korpa["racunar_ID"];
+        $korpa_ID = $proizvod_korpa["korpa_ID"];
 
-  </main>
+        ?>
+        <!-- Render Kolicine?? -->
+        <form class="korpa-stavka" method="POST" action="obrisi_stavku.php">
+          <!-- Render Slike-->
+          <img src="image/racunari/<?= $slika; ?>" alt="">
+          <!-- Render naziva -->
+          <div class="korpa-stavka-detalji">
+            <!-- Render Cene -->
+            <div class="korpa-stavka-naziv">Naziv:
+              <?= $naziv; ?>
+            </div>
+            <div class="korpa-stavka-cena">Cena: RSD
+              <?= $cena; ?>
+            </div>
+          </div>
+          <input type="hidden" name="korpa_ID" value="<?= $korpa_ID; ?>">
+          <button class="korpa-stavka-ukloni" type="submit">Obrisi stavku</button>
+          <!-- Render dugmeta za brisanje -->
+        </form>
+      <?php endforeach; ?>
+
+    </main>
   <?php endif; ?>
   <!-- Render Total -->
 

@@ -108,16 +108,21 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <th>Naziv</th>
                             <th>Cena</th>
+                            <th>Pregledi</th>
+                            <th>Kupovine</th>
                             <th>Slika</th>
                             <th>Izmeni</th>
                             <th>Obrisi</th>
-
+                            
                         </tr>
                         <?php foreach ($racunarirez as $racunar): ?>
                             <tr>
                                 <form>
                                     <td><input type="text" name="naziv" value="<?= $racunar['naziv'] ?>"></td>
                                     <td><input type="number" name="cena" value="<?= $racunar['cena'] ?>"></td>
+                                    <td><input type="number" name="broj_pregleda" value="<?= $racunar['broj_pregleda'] ?>"></td>
+                                    <td><input type="number" name="broj_kupovina" value="<?= $racunar['broj_kupovina'] ?>"></td>
+                                    
                                     <td>
                                         <select name="slika">
                                             <?php foreach ($slike as $slicica):
@@ -149,6 +154,8 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <tr>
                             <th>Naziv</th>
                             <th>Cena</th>
+                            <th>Pregledi</th>
+                            <th>Kupovine</th>
                             <th>Slika</th>
 
                         </tr>
@@ -156,6 +163,8 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <form action="dodaj_racunar.php" method="post">
                                 <td><input type="text" name="naziv"></td>
                                 <td><input type="number" name="cena"></td>
+                                <td><input type="number" name="broj_pregleda"></td>
+                                <td><input type="number" name="broj_kupovina"></td>
                                 <td><select name="slika">
                                         <?php foreach ($slike as $slicica):
                                             ?>
@@ -206,6 +215,10 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </form>
 
         </div>
+    
+    
+    
+    
     </main>
 
 </body>
