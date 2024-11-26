@@ -215,9 +215,6 @@ foreach ($rezultat2 as $users) {
 
     </script>
 </body>
-<footer>
-    <?php include "footer.php" ?>
 
-</footer>
 
 </html>
