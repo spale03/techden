@@ -1,10 +1,13 @@
-.kontejner-user{
+/* .kontejner-user{
 
 font-family: 'Times New Roman', Times, serif;
 font-size: 20px;
 border-color: black;
 margin:10px;
+
 }
+
+
 .kontejner-user-novi{
 
     font-family: 'Times New Roman', Times, serif;
@@ -15,6 +18,8 @@ margin:10px;
     padding-left: 63px;
     
 }
+
+
 .kontejner-proizvod {
 
     font-family: 'Times New Roman', Times, serif;
@@ -26,4 +31,118 @@ margin:10px;
 
 
 
+}
+.create_button {
+    
+    border-color: black;
+}
+
+.container_import_export {
+    border-color: black;
+
+
+} */
+
+
+body {
+    background-color: white; /* Pozadina stranice */
+    font-family: Arial, sans-serif; /* Font za ceo dokument */
+    margin: 0;
+    padding: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.kontejner-user, 
+.kontejner-proizvod {
+    display: flex; /* Aktivira Flexbox */
+    flex-direction: row; /* Postavlja elemente horizontalno */
+    justify-content: space-around; /* Jednaki razmaci između tabela */
+    align-items: flex-start; /* Poravnanje na vrh */
+    gap: 20px; /* Razmak između tabela */
+    margin-bottom: 30px; /* Razmak ispod svake grupe */
+}
+
+.kontejner-user-izmeni, 
+.kontejner-user-novi, 
+.kontejner-proizvod-izmeni, 
+.kontejner-proizvod-novi {
+    flex: 1; /* Svaka tabela zauzima isti prostor */
+    padding: 10px; /* Unutrašnji razmak */
+    border: 1px solid #ccc; /* Svetlo siva granica */
+    border-radius: 5px; /* Zaobljeni uglovi */
+    background-color: #f9f9f9; /* Svetla pozadina */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Blaga senka */
+}
+
+table {
+    width: 100%; /* Širina tabele */
+    border-collapse: collapse; /* Spajanje granica */
+    text-align: left; /* Poravnanje teksta ulevo */
+}
+
+th, td {
+    padding: 8px 12px; /* Unutrašnji razmak ćelija */
+    border: 1px solid #ddd; /* Svetlo sive granice */
+}
+
+th {
+    background-color: #333; /* Tamna pozadina zaglavlja */
+    color: white; /* Bela boja teksta zaglavlja */
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Svetlo siva pozadina za parne redove */
+}
+
+tr:hover {
+    background-color: #e9e9e9; /* Svetlo siva pri hover efektu */
+}
+
+button {
+    background-color: #007bff; /* Plava boja dugmeta */
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: #0056b3; /* Tamnija plava pri hover efektu */
+}
+
+.kontejner-slika-nova, 
+.container_import_export {
+    margin-top: 30px;
+    text-align: center; /* Centriranje sadržaja */
+}
+
+.container_import_export form {
+    margin: 10px 0;
+}
+
+label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="file"] {
+    margin: 10px 0;
+}
+
+input[type="submit"] {
+    background-color: #28a745; /* Zelena boja dugmeta */
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+input[type="submit"]:hover {
+    background-color: #218838; /* Tamnija zelena pri hover efektu */
 }

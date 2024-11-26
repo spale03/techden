@@ -2,7 +2,9 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: rgb(41, 142, 224);
+  height:100%;
+  background-color: rgb(231, 233, 235);
+  
 }
 
 header {
@@ -124,6 +126,9 @@ footer {
   color: #fff;
   padding: 10px;
   text-align: center;
+  margin:0px;
+  width:100%;
+  position:relative
 }
 
 button {
@@ -131,4 +136,38 @@ button {
   border-color:transparent;
   border-bottom-color:transparent;
   border-width: 0;
+}
+
+.canvas-container{
+  display: flex; /* Koristi Flexbox */
+  justify-content: space-between; /* Rasporedi grafike levo, sredina i desno */
+  align-items: left;
+  width: 100%; /* Širina kontejnera */
+  max-width: 1200px; /* Maksimalna širina */
+  margin:200px 300px;
+  padding: 20px;
+  
+  
+}
+
+canvas {
+  width: 100%; /* Automatsko skaliranje unutar grid kolone */
+  height: 400px; /* Fiksna visina */
+}
+
+.title-container{
+display:flex;
+justify-content: space-around;
+align-items: center;
+gap: 20px;
+padding: 20px;
+
+}
+.title-container h3 {
+font-size: 10px;
+font-weight: bold;
+color: black;
+text-align: center;
+margin: 0;
+
 }

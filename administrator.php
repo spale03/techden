@@ -37,6 +37,27 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <?php endif; ?>
         <div class="kontejner-user">
             <div class="kontejner-user-izmeni">
+                <table class="tabela-user-novi">
+                    <tbody>
+                        <tr>
+                            <th>username</th>
+                            <th>password</th>
+                            <th>email</th>
+                            <th>is_admin</th>
+                            <th>confirm</th>
+                        </tr>
+                        <tr>
+                            <form action="dodaj_korisnika.php" method="post">
+                                <input type="hidden" name="administrator" value="1">
+                                <td><input type="text" name="username" id="username"></td>
+                                <td><input type="text" name="password" id="password"></td>
+                                <td><input type="email" name="email" id="email"></td>
+                                <td><input type="checkbox" name="is_admin" id="is_admin"></td>
+                                <td><button class="create_button" type="submit">create</button></td>
+                            </form>
+                        </tr>
+                    </tbody>
+                </table>
                 <table class="tabela-user">
                     <tbody>
                         <tr>
@@ -76,33 +97,43 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                         <?php endforeach; ?>
                     </tbody>
                 </table>
+
+
             </div>
-            <div class="kontejner-user-novi">
-                <table class="tabela-user-novi">
+
+        </div>
+        <div class="kontejner-proizvod">
+            <div class="kontejner-proizvod-izmeni">
+            <table>
                     <tbody>
                         <tr>
-                            <th>username</th>
-                            <th>password</th>
-                            <th>email</th>
-                            <th>is_admin</th>
-                            <th>confirm</th>
+                            <th>Naziv</th>
+                            <th>Cena</th>
+                            <th>Pregledi</th>
+                            <th>Kupovine</th>
+                            <th>Slika</th>
+                            <th>Confirm</th>
                         </tr>
                         <tr>
-                            <form action="dodaj_korisnika.php" method="post">
-                                <input type="hidden" name="administrator" value="1">
-                                <td><input type="text" name="username" id="username"></td>
-                                <td><input type="text" name="password" id="password"></td>
-                                <td><input type="email" name="email" id="email"></td>
-                                <td><input type="checkbox" name="is_admin" id="is_admin"></td>
-                                <td><button type="submit">create</button></td>
+                            <form action="dodaj_racunar.php" method="post">
+                                <td><input type="text" name="naziv"></td>
+                                <td><input type="number" name="cena"></td>
+                                <td><input type="number" name="broj_pregleda"></td>
+                                <td><input type="number" name="broj_kupovina"></td>
+                                <td><select name="slika">
+                                        <?php foreach ($slike as $slicica):
+                                            ?>
+
+                                            <option value="<?= $slicica['naziv'] ?>">
+                                                <?= $slicica['naziv'] ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select></td>
+                                <td><button type="submit">dodaj</button></td>
                             </form>
                         </tr>
                     </tbody>
                 </table>
-            </div>
-        </div>
-        <div class="kontejner-proizvod">
-            <div class="kontejner-proizvod-izmeni">
                 <table>
                     <tbody>
                         <tr>
@@ -113,16 +144,18 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                             <th>Slika</th>
                             <th>Izmeni</th>
                             <th>Obrisi</th>
-                            
+
                         </tr>
                         <?php foreach ($racunarirez as $racunar): ?>
                             <tr>
                                 <form>
                                     <td><input type="text" name="naziv" value="<?= $racunar['naziv'] ?>"></td>
                                     <td><input type="number" name="cena" value="<?= $racunar['cena'] ?>"></td>
-                                    <td><input type="number" name="broj_pregleda" value="<?= $racunar['broj_pregleda'] ?>"></td>
-                                    <td><input type="number" name="broj_kupovina" value="<?= $racunar['broj_kupovina'] ?>"></td>
-                                    
+                                    <td><input type="number" name="broj_pregleda" value="<?= $racunar['broj_pregleda'] ?>">
+                                    </td>
+                                    <td><input type="number" name="broj_kupovina" value="<?= $racunar['broj_kupovina'] ?>">
+                                    </td>
+
                                     <td>
                                         <select name="slika">
                                             <?php foreach ($slike as $slicica):
@@ -148,38 +181,7 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                     </tbody>
                 </table>
             </div>
-            <div class="kontejner-proizvod-novi">
-                <table>
-                    <tbody>
-                        <tr>
-                            <th>Naziv</th>
-                            <th>Cena</th>
-                            <th>Pregledi</th>
-                            <th>Kupovine</th>
-                            <th>Slika</th>
-
-                        </tr>
-                        <tr>
-                            <form action="dodaj_racunar.php" method="post">
-                                <td><input type="text" name="naziv"></td>
-                                <td><input type="number" name="cena"></td>
-                                <td><input type="number" name="broj_pregleda"></td>
-                                <td><input type="number" name="broj_kupovina"></td>
-                                <td><select name="slika">
-                                        <?php foreach ($slike as $slicica):
-                                            ?>
-
-                                            <option value="<?= $slicica['naziv'] ?>">
-                                                <?= $slicica['naziv'] ?>
-                                            </option>
-                                        <?php endforeach; ?>
-                                    </select></td>
-                                <td><button type="submit">dodaj</button></td>
-                            </form>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            
         </div>
         <div class="kontejner-slika-nova">
             <!-- Mora imati enctype multipart/form-data -->
@@ -190,12 +192,12 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
                 <input type="hidden" name="MAX_FILE_SIZE" value="40000000" />
                 <label>
                     Dodaj sliku:
-                    <input name="slika" type="file" accept="image/*"/>
+                    <input name="slika" type="file" accept="image/*" />
                 </label>
                 <input type="submit" value="Dodaj" />
             </form>
         </div>
-        <div class="container-import-export">
+        <div class="container_import_export">
 
             <form id="import_id" enctype="multipart/form-data" action="fileparser.php" method="POST">
                 <input type="hidden" name="MAX_FILE_SIZE" value="4000000" />
@@ -215,10 +217,10 @@ $racunarirez = $stmt->fetchAll(PDO::FETCH_ASSOC);
             </form>
 
         </div>
-    
-    
-    
-    
+
+
+
+
     </main>
 
 </body>

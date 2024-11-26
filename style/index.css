@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background-color: rgb(73, 144, 238);
+  background-color: rgb(43, 108, 192);
 }
 
 header {
@@ -73,41 +73,6 @@ main {
   padding: 20px;
 }
 
-.car {
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.car img {
-  width: 81%;
-  height: auto;
-  padding-left: 177px;
-  opacity: 89%;
-}
-
-.car-details {
-  background-color: rgba(0, 0, 0, 0.5);
-  color: #fff;
-  padding: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-  width: 80%;
-  font-weight: bold;
-  font-style: italic;
-}
-
-#carImage {
-  opacity: 1;
-  transition: opacity 0.5s ease;
-}
-
-.fade-out {
-  opacity: 0;
-}
-
 .why-us {
   margin-bottom: 40px;
   position: relative;
@@ -116,8 +81,8 @@ main {
 .why-us img {
   width: 81%;
   height: auto;
-  padding-left: 177px;
-  opacity: 50%;
+  padding-left: 238px;
+  opacity: 80%;
 }
 
 .why-us-text {

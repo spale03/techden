@@ -15,7 +15,7 @@
 
   <main>
     <div class="why-us">
-      <img src="image/internet.jpg" alt="pozadina">
+    <img src="image/internet.jpg" alt="pozadina">
       <div class="why-us-text">
         <h3>Zašto kupovati kod nas</h3>
       
